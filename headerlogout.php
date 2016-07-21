@@ -11,20 +11,10 @@
 	?>
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+	<meta name="description" content="Xtreme All About Computer Hardware" />
+	<meta name="keywords" content="Xtreme" />
+	<meta name="author" content="Teah Hak Yu" />
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
 	<!-- Bootstrap CSS v3 -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -84,15 +74,15 @@
 								<li>
 									<a href="computerhardwarebenchmark.php" class="fh5co-sub-ddown">Computer Hardware benchmarks</a>
 									<ul class="fh5co-sub-menu">
-										<li><a href="CPU.php" target="_blank">CPU</a></li>
-										<li><a href="displaycards.php" target="_blank">Display cards</a></li>
+										<li><a href="CPU.php">CPU</a></li>
+										<li><a href="displaycards.php">Display cards</a></li>
 									</ul>
 								</li>
 								<li>
 									<a href="computeraccessorieslist.php" class="fh5co-sub-ddown">Computer &amp; Accessories list</a>
 									 <ul class="fh5co-sub-menu">
-									 	<li><a href="processors.php" target="_blank">Processors</a></li>
-										<li><a href="motherboards.php" target="_blank">Motherboards</a></li>
+									 	<li><a href="processors.php">Processors</a></li>
+										<li><a href="motherboards.php">Motherboards</a></li>
 									</ul>
 								</li>
 								<li><a href="about.php">About</a></li>

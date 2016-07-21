@@ -1,15 +1,15 @@
 <?php
 	ob_start();
-	session_start();
+	session_start();   //initialized session
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');   //get header if user do not logged in
 	}
 ?>
 <?php
-	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");
+	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");   // established the database connections 
 	if (isset($_POST['submitted'])) {
 		$email=$_POST['mail'];
 		$password=$_POST['pass'];

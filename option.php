@@ -1,15 +1,15 @@
 <?php
 	ob_start();
-	session_start();
-	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");
+	session_start();     //initialized session
+	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");   // established the database connections 
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');    //get header if user do not logged in
 	}
 	if($_SESSION['user_level'] != 1){
-		header("location: welcome.php");
+		header("location: welcome.php");   //direct to welcome page
 	}
 	function loggedin(){
 		if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
@@ -36,11 +36,11 @@
 	}
 	else{
 		if($type == 'a'){
-			mysqli_query($con, "UPDATE `register` SET `Type` = 'd' WHERE `register_id`='$uid'");		
-			header("location: admin.php?type=user");
+			mysqli_query($con, "UPDATE `register` SET `Type` = 'd' WHERE `register_id`='$uid'");	//'update' query used to change value	
+			header("location: admin.php?type=user");  //direct to admin page
 		} else if($type == 'd'){
-			mysqli_query($con, "UPDATE `register` SET `Type` = 'a' WHERE `register_id`='$uid'");
-			header("location: admin.php?type=user");
+			mysqli_query($con, "UPDATE `register` SET `Type` = 'a' WHERE `register_id`='$uid'");    //'update' query used to change value
+			header("location: admin.php?type=user");   //direct to admin page
 		}
 	}
 ?>

@@ -1,5 +1,11 @@
 <?php
-	require("header.html");
+	session_start();   //initialized session
+	if(isset($_SESSION['user'])){
+		include ('headerlogout.php');     //get headerlogout if user logged in
+	}
+	else{
+		include ('header.html');  //get header if user do not logged in
+	}
 ?>
 		<div class="fh5co-hero fh5co-hero-2" id="fh5co-section-hero">
 			<div class="fh5co-overlay"></div>

@@ -1,24 +1,24 @@
 <?php
-	session_start();
-	if( isset($_SESSION['user'])!="" ){
-		 header("Location: welcome.php");
+	session_start();    //initialized session
+	if( isset($_SESSION['user'])!="" ){ 
+		 header("Location: welcome.php");  //direct to welcome page
 	}
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');     //get header if user do not logged in
 	}
 ?>
 <?php
-	error_reporting( ~E_ALL & ~E_DEPRECATED &  ~E_NOTICE );
+	error_reporting( ~E_ALL & ~E_DEPRECATED &  ~E_NOTICE );    
 	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");
 	if (!$con){
 		die("Could not connect: " . mysqli_connect_error());
 	}
 	if(isset($_POST['submitted'])){
 		
-		$username=trim($_POST['username']);
+		$username=trim($_POST['username']);  //strip whitespace from the string
 		$email=trim($_POST['email']);
 		$password=trim($_POST['password']);
 		$confirmpassword = trim($_POST['confirmpassword']);
@@ -26,7 +26,7 @@
 		$month = trim($_POST['month']);
 		$year = trim($_POST['year']);
 		
-		$username=strip_tags($_POST['username']);
+		$username=strip_tags($_POST['username']); //strip the string
 		$email=strip_tags($_POST['email']);
 		$password=strip_tags($_POST['password']);
 		$confirmpassword = strip_tags($_POST['confirmpassword']);
@@ -35,19 +35,20 @@
 		$year = strip_tags($_POST['year']);
 		
 		
-		$pass = password_hash($password, PASSWORD_DEFAULT);
+		$pass = password_hash($password, PASSWORD_DEFAULT);  //set up the encrypted password 
 		
 		// check email exist or not
-		$query = "SELECT email FROM register WHERE email='$email'";
-		$result = mysqli_query($con,$query);
+		$query = "SELECT email FROM register WHERE email='$email'";  //'select' query is used to select certain table
+		$result = mysqli_query($con,$query);   //connect to database to send query
 		 
 		$count = mysqli_num_rows($result); // if email not found then proceed
 		 
 		if($count==0)
 		{
+			//'insert' query used to insert the selected categories with the values
 			$sql=("INSERT INTO register (register_id, username, email, password, confirmpassword, day, month, year, Type, user_level)Values('', '$username', '$email', '$pass', '$confirmpassword', '$day', '$month', '$year', 'a', '2')");
 		
-			$res=mysqli_query($con,$sql);
+			$res=mysqli_query($con,$sql); //connect to database to send query
 			if($res){
 				$errTyp = "success";
 			    $errMSG = "successfully registered, you may login now";

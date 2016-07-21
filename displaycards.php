@@ -1,9 +1,10 @@
 <?php
+	session_start();   //initialized session
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php'); //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html'); //get header if user do not logged in
 	}
 ?>
 		<div id="wrapper-table">
@@ -22,23 +23,23 @@
 				</tr></thead>
 				<tbody>				
 				<?php
-					$mysql_host = "127.0.0.1";
-					$mysql_user = "root";
-					$mysql_pass = "";
-					$mysql_db = "user_data";
+					$mysql_host = "127.0.0.1";  //hostname
+					$mysql_user = "root";      //username
+					$mysql_pass = "";          //password
+					$mysql_db = "user_data";    //database
 					
-					$con = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
+					$con = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db); //established database connection
 					
-					if($con -> connect_error){
+					if($con -> connect_error){        //if database connection failed it will output error message
 						die("Connection failed: " . $con -> connect_error);
 					}
 					
-					$query = "SELECT * FROM displaycard WHERE displaycard_categories = 'graphic' ";
+					$query = "SELECT * FROM displaycard WHERE displaycard_categories = 'graphic' ";  //'select' query is used to select certain table
 					
-					$result = $con -> query($query);
+					$result = $con -> query($query); //connected with database to send query
 					
-					if($result->num_rows > 0){
-						while($row = $result->fetch_assoc()){
+					if($result->num_rows > 0){   //the result will more than 0 if it is found from the table
+						while($row = $result->fetch_assoc()){  //get the row from the table
 							echo '<tr><td><div class="columnspan"><div class="columnspanleft">';
 							echo '<p>&nbsp&nbsp'.$row['displaycard_id'].'<br />'.$row['displaycard_ur'].'</p>';
 							echo '</div><div class="columnspanright">';
@@ -63,5 +64,5 @@
 			</table>
 		</div>
 <?php
-	require("footer.html");
+	require("footer.html"); //get footer
 ?>

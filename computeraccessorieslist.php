@@ -1,9 +1,10 @@
 <?php
-	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+	session_start(); //initialized session
+	if(isset($_SESSION['user'])){        
+		include ('headerlogout.php'); //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html'); //get header if user do not logged in
 	}
 ?>
 		
@@ -93,5 +94,5 @@
 			</div>
 		</div>
 <?php
-	require("footer.html");
+	require("footer.html");   //get footer
 ?>

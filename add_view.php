@@ -1,18 +1,19 @@
-<?php  
+<?php 
+session_start();   //initialized session
 $db = new mysqli('127.0.0.1', 'root', '', 'user_data');// change the database connections 
 if(isset($_SESSION['user'])) {
-	include("headerlogout.php");
+	include("headerlogout.php");   //get headerlogout if user logged in
 }
 else{
-    include("header.html");
+    include("header.html");   //get header if user do not logged in
 }
 if(!isset($_POST['search'])){
-	header("location: mainpage1.php");
+	header("location: mainpage1.php"); //direct to the home page
 }
-$search_sql="SELECT * FROM search WHERE title LIKE '%".$_POST["search"]."%'";
-$search_query=mysqli_query($db, $search_sql);
-if(mysqli_num_rows($search_query)!=0){
-	$search_rs=mysqli_fetch_assoc($search_query);
+$search_sql="SELECT * FROM search WHERE title LIKE '%".$_POST["search"]."%'";  //'select' query used to select the alike data 
+$search_query=mysqli_query($db, $search_sql);   //connect to database to send query 
+if(mysqli_num_rows($search_query)!=0){    
+	$search_rs=mysqli_fetch_assoc($search_query); //get the row of the table
 }
 		
 
@@ -92,6 +93,6 @@ if(mysqli_num_rows($search_query)!=0) {
 	</div>
 </div>
 <?php
-	include("footer.html");
+	include("footer.html"); //get footer
 ?>
 

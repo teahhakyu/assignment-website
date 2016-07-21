@@ -1,8 +1,8 @@
 <?PHP
-session_start();
-unset($_SESSION);
-session_destroy();
-require("header.html");
+session_start();   //initialized session
+unset($_SESSION);  // remove all session variables
+session_destroy(); //end of session
+require("header.html"); //get header
 
 ?>
 <?php
@@ -10,4 +10,5 @@ require("header.html");
 	echo '<p><a href="loginpage1.php">Login Again</a></p></div></div>';
 ?>
 
-<?php require("footer.html"); ?>
+<?php require("footer.html"); //get footer
+?> 

@@ -1,15 +1,15 @@
 <?php
 	ob_start();
-	session_start();
-	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");
+	session_start();   //initialized session
+	$con = mysqli_connect("127.0.0.1", "root", "", "user_data");   // established the database connections 
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');   //get header if user do not logged in
 	}
-	if($_SESSION['user_level'] != 1){
-		header("location: welcome.php");
+	if($_SESSION['user_level'] != 1){  
+		header("location: welcome.php");  //direct to welcome page
 	}
 	function loggedin(){
 		if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
@@ -20,8 +20,8 @@
 	}
 	if(loggedin()){
 		$my_id = $_SESSION['user'];
-		$user_query = mysqli_query($con, "SELECT username, user_level FROM register WHERE register_id='$my_id'");
-		$run_user = mysqli_fetch_array($user_query);
+		$user_query = mysqli_query($con, "SELECT username, user_level FROM register WHERE register_id='$my_id'"); //'select' query is used to select certain table
+		$run_user = mysqli_fetch_array($user_query);   //get the row of the table
 		$username = $run_user['username'];
 		$user_level = $run_user['user_level']; 
 		$query_level = mysqli_query($con, "SELECT name FROM user_level WHERE id='$user_level'");
@@ -84,5 +84,5 @@
 	</div>
 	</div>
 <?php 
-	require("footer.html");
+	require("footer.html"); //get footer
 ?>

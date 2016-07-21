@@ -1,9 +1,10 @@
 <?php
+	session_start();   //initialized session
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');   //get header if user do not logged in
 	}
 ?>
 		<div id="fh5co-motherboard-section">
@@ -36,12 +37,12 @@
 								die("Connection failed: " . $con -> connect_error);
 							}
 									
-							$query_1 = "SELECT * FROM motherboard LIMIT 0, 1";
+							$query_1 = "SELECT * FROM motherboard LIMIT 0, 1";  //'select' query used and it limit only 0 which is the first row of the table
 									
 							$result_1 = $con->query($query_1);	
 						
-							if($result_1->num_rows > 0){
-								while($row = $result_1->fetch_assoc()){
+							if($result_1->num_rows > 0){    //the result will more than 0 if it is found from the table 
+								while($row = $result_1->fetch_assoc()){  //get the row from the table
 									echo '<p><img src="asrock X99 oc formula motherboard' . $row["motherboard_id"] . '.png" width="400px" height="500px" onclick="window.open(this.src)" alt="asrock X99 oc formula motherboard"></p>';
 									
 									echo '<p><img src="asrock X99 oc formula motherboard1' . $row["motherboard_id"] . '.jpg" width="400px" height="110px" onclick="window.open(this.src)" alt="asrock X99 oc formula rear view"></p>';

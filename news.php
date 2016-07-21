@@ -1,9 +1,10 @@
 <?php
+	session_start();   //initialized session
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');  //get header if user do not logged in
 	}
 ?>
 	
@@ -146,11 +147,11 @@
 		<script>
 			function showhide1()
 			{
-				if(document.getElementById('hidetext1').style.display == 'none')
+				if(document.getElementById('hidetext1').style.display == 'none')  //if the text display none
 				{
-					document.getElementById('hidetext1').style.display='block';
+					document.getElementById('hidetext1').style.display='block';   //pop up the hide text
 				}
-				else{document.getElementById('hidetext1').style.display = 'none';}
+				else{document.getElementById('hidetext1').style.display = 'none';}  //hide the pop up again
 			}
 			function showhide2()
 			{

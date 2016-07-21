@@ -1,9 +1,10 @@
 <?php
+	session_start();    //initialized session
 	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');   //get header if user do not logged in
 	}
 ?>
 
@@ -150,42 +151,42 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-var currentIndex = 0,
-  items = $('.container-full div'),
-  itemAmt = items.length;
+		var currentIndex = 0,
+		  items = $('.container-full div'),
+		  itemAmt = items.length;
 
-function cycleItems() {
-  var item = $('.container-full div').eq(currentIndex);
-  items.hide();
-  item.css('display','inline-block');
-}
+		function cycleItems() {
+		  var item = $('.container-full div').eq(currentIndex);
+		  items.hide();
+		  item.css('display','inline-block');
+		}
 
-var autoSlide = setInterval(function() {
-  currentIndex += 1;
-  if (currentIndex > itemAmt - 1) {
-    currentIndex = 0;
-  }
-  cycleItems();
-}, 3000);
+		var autoSlide = setInterval(function() {
+		  currentIndex += 1;
+		  if (currentIndex > itemAmt - 1) {   //slide to right
+			currentIndex = 0;
+		  }
+		  cycleItems();
+		}, 3000);
 
-$('#next').click(function() {
-  clearInterval(autoSlide);
-  currentIndex += 1;
-  if (currentIndex > itemAmt - 1) {
-    currentIndex = 0;
-  }
-  cycleItems();
-});
+		$('#next').click(function() {
+		  clearInterval(autoSlide);
+		  currentIndex += 1;
+		  if (currentIndex > itemAmt - 1) {   //slide to right
+			currentIndex = 0;
+		  }
+		  cycleItems();
+		});
 
-$('#prev').click(function() {
-  clearInterval(autoSlide);
-  currentIndex -= 1;
-  if (currentIndex < 0) {
-    currentIndex = itemAmt - 1;
-  }
-  cycleItems();
-});
-</script>
+		$('#prev').click(function() { 
+		  clearInterval(autoSlide);
+		  currentIndex -= 1;
+		  if (currentIndex < 0) {
+			currentIndex = itemAmt - 1;   //slide to left
+		  }
+		  cycleItems();
+		});
+		</script>
 <?php
-	require("footer.html");
+	require("footer.html"); //get footer
 ?>

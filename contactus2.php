@@ -1,10 +1,10 @@
 <?php
-	session_start();
-	if(isset($_SESSION['user'])){
-		include ('headerlogout.php');
+	session_start();  //initialized session
+	if(isset($_SESSION['user'])){   
+		include ('headerlogout.php');   //get headerlogout if user logged in
 	}
 	else{
-		include ('header.html');
+		include ('header.html');   //get header if user do not logged in
 	}
 ?>
 		<div class="fh5co-hero fh5co-hero-2" id="fh5co-section-hero">
@@ -60,13 +60,12 @@
 			</div>
 		</div>
 		<!-- END fh5co-contact -->
-		<!-- END map -->
 <?php
-	$conn = new mysqli("127.0.0.1", "root", "", "user_data") or die($conn->connect_error);
-	$name = $_POST['contactname'];
-	$email = $_POST['contactemail'];
-	$message = $_POST['contactmessage'];
-	$contactname    = mysqli_real_escape_string($conn,$name);
+	$conn = new mysqli("127.0.0.1", "root", "", "user_data") or die($conn->connect_error);  //established database connection
+	$name = $_POST['contactname'];       //acquired contactname
+	$email = $_POST['contactemail'];    //acquired contactemail
+	$message = $_POST['contactmessage'];    //acquired contactmessage
+	$contactname    = mysqli_real_escape_string($conn,$name);      //remove special character in contactname
 	$contactemail   = mysqli_real_escape_string($conn,$email);
 	$contactmessage = mysqli_real_escape_string($conn,$message);
 	$query   = "INSERT into contact(contact_name,contact_email,contact_message) 
@@ -74,10 +73,10 @@
 	$success = $conn->query($query);
 
 	if (!$success) {
-		die("Couldn't enter data: ".$conn->error);
+		die("Couldn't enter data: ".$conn->error);   
 	}
 ?>
 <?php
-	require("footer.html");
+	require("footer.html"); //get footer
 ?>
 

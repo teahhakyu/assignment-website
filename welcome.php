@@ -1,19 +1,19 @@
 <?php
  ob_start();
- session_start();
+ session_start();   //initialized session
  $con = mysqli_connect("127.0.0.1", "root", "", "user_data");
  if (!$con){
 	die("Could not connect: " . mysqli_connect_error());
 }
  if( !isset($_SESSION['user']) ) {
-  header("Location: loginpage1.php");
+  header("Location: loginpage1.php");  //direct to login page
   exit;
  }
  if(isset($_SESSION['user'])) {
-	include("headerlogout.php");
+	include("headerlogout.php");   //get headerlogout if user logged in
  }
  else{
-	include("header.html");
+	include("header.html");   //get header if user do not logged in
  }
 function loggedin(){
 	if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
@@ -25,8 +25,8 @@ function loggedin(){
 if(loggedin()){
 	$my_id = $_SESSION['user'];
 
-	$user_query = mysqli_query($con, "SELECT username, user_level FROM register WHERE register_id='$my_id'");
-	$run_user = mysqli_fetch_array($user_query);
+	$user_query = mysqli_query($con, "SELECT username, user_level FROM register WHERE register_id='$my_id'"); //'select' query is used to select certain table
+	$run_user = mysqli_fetch_array($user_query);    //get the row of the table
 	$username = $run_user['username'];
 	$user_level = $run_user['user_level']; 
 	$query_level = mysqli_query($con, "SELECT name FROM user_level WHERE id='$user_level'");
@@ -34,9 +34,7 @@ if(loggedin()){
 	$level_name = $run_level['name'];
 	$_SESSION['user_level']=$run_user['user_level'];
 }
- // select loggedin users detail
- //$res=mysqli_query($con,"SELECT * FROM register WHERE register_id=".$_SESSION['user']);
- //$userRow=mysqli_fetch_array($res);
+
 ?>
 
 <?php
@@ -63,7 +61,7 @@ body{
 	echo '<div id="fh5co-content-section"><div class="container"><div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 	<p><h1> Hi,<span style="font-size:30px; font-weight: bold">'.$username .'</span></h1></p>
 	<p><h1>Welcome to the XTREME All About Computer Hardware Website!</h1></p>';
-	date_default_timezone_set('America/New_York');
+	date_default_timezone_set('America/New_York');  //the date is set as equal to the date of america
 	echo '<p>You logged in as <span style="font-size:20px; font-weight: bold">['.$level_name.']</span></p>';
 	?>
 <?php
@@ -82,6 +80,6 @@ if($user_level==1){
 </div>
 </div>
 <?php
-	require("footer.html");
+	require("footer.html");   //get footer
 ?>
 
